@@ -1,0 +1,26 @@
+create table Proj
+(proj# number(4,0) constraint proj_proj#_pk primary key,
+p_name varchar(20) constraint proj_pname_uk unique,
+p_desc varchar(20),
+p_budget int);
+
+
+create table workorders
+(wo# number(4,0) constraint workorders_wo#_pk primary key,
+proj# number(4,0),
+wo_desc varchar(20) constraint workorders_wodesc_uk unique,
+wo_hours int,
+wo_start date,
+wo_due date,
+wo_complete number(1) default(0) not null,
+constraint workorders_proj#_fk foreign key (proj#)
+references Proj(proj#),
+constraint workorders_wohours_ck check(wo_hours>0));
+
+
+// every data added in the wo_desc column must be unique.
+//wo# is primary key 
+// cannot have a value inserted in proj# in the work orders table if that value is not there
+   in the proj# column in the Proj table.
+// 1 means Yes, and the default value is 0 which means no. Cannot be a null value in the wo_complete column.
+// check constraint for wo_hours checks if the work hours is > than 0.

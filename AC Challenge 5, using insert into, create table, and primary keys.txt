@@ -1,0 +1,43 @@
+create table category 
+(catcode varchar2(3) constraint category_catcode_pk primary key,
+catdesc varchar2(11) NOT NULL);
+
+alter table books
+modify(catcode varchar2(3));
+commit;
+
+
+INSERT INTO category(catcode,catdesc)
+Values('bus','Business');
+INSERT INTO category(catcode,catdesc)
+VALUES('chn','Children');
+INSERT INTO category(catcode,catdesc)
+VALUES ('cok','Cooking');
+INSERT INTO category(catcode,catdesc)
+VALUES('com', 'Computer');
+insert into category(catcode, catdesc)
+values('fal','Family');
+insert into category(catcode,catdesc)
+values('fit', 'Fitness');
+insert into category(catcode,catdesc)
+values('seh', 'self help');
+insert into category(catcode,catdesc)
+values('lit', 'literature');
+commit;
+
+
+alter table books
+add constraint books_catcode_fk foreign key(catcode)
+references category(catcode);
+commit;
+
+update books
+set catcode= 'bus'
+where category ='BUSINESS';
+
+update books
+set catcode= '&catcode'
+where category ='&category';
+commit;
+
+

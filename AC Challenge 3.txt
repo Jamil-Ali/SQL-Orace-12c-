@@ -1,0 +1,19 @@
+ALTER TABLE acctmanager
+add (comm_id int default (10)); /* I am adding a column labeled comm_id. It has a data type of integer
+                                   with a default value of 10. */
+ALTER Table acctmanager
+add (ben_id int default (10));
+
+CREATE TABLE COMMRATE 
+(Comm_id int default (10),   /* I am creating a TABLE called COMMRATE*/
+Comm_rank varchar (15),      /* Data type of varchar having 15 characters set to be its limit */
+Rate Number(2,2) );          /* data type of number that can only contain 2 digits with 2 decimal places */
+
+CREATE TABLE BENEFITS 
+(Ben_id int default (10),
+Ben_plan varchar(1), 
+Ben_provider int, 
+Active number(1) default(0) NOT NULL) ;   /* active number(1) default(0) means the data type is number,
+                                            and the default value starts as 0. It cannot contain a NULL value.
+                                            For this assignment, active is my column, and it stands for whether
+                                              the employee benefits are active; 1 means YES and 0 means NO. */

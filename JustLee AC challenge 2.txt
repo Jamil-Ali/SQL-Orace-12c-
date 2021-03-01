@@ -1,0 +1,11 @@
+select 
+lastname || ','||  firstname   /* the || ',' || indicates that I am joining the lastname and firstname together. */
+AS "Name",
+
+city || ',' || state
+AS "Location",                /* the AS statement in this particular script tells me what I am naming city and state 
+                               */
+
+address || ',' || zip
+AS "Current Residency"
+from customers;                /* I am querying all of this information FROM the customers TABLE.
