@@ -1,0 +1,20 @@
+SELECT count(isbn) Frequently_Purchased,title, isbn, TO_CHAR(((retail-cost)/cost*100),'$999.99') profit
+FROM books JOIN orderitems USING (isbn)
+GROUP BY  title,isbn,((retail-cost)/cost*100)
+ORDER BY count(isbn) DESC;
+
+select SUM(quantity)
+from orderitems;
+
+SELECT title,profit
+FROM (SELECT count(isbn) Frequently_Purchased,title, isbn, TO_CHAR(((retail-cost)/cost*100),'$999.99') profit
+      FROM books JOIN orderitems USING (isbn)
+      GROUP BY  title,isbn,((retail-cost)/cost*100)
+      ORDER BY count(isbn) DESC)
+
+WHERE ROWNUM <=5;
+
+
+/* I know my script is incorrect because my output for my subquery shows there are only
+32 books when in reality 40 books are purchased, I would like to see the answer key for this
+assignment */
